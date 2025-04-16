@@ -79,9 +79,9 @@ def main():
     print("Validation F1-macro score on held-out set: {:.4f}".format(val_score))
 
     # Optional: Save predictions to CSV
-    # val_df = X_val.to_frame()
-    # val_df['Text'] = X_val
-    # generate_result(val_df, y_val_pred, 'val_predictions.csv')
+    val_df = X_val.to_frame()
+    val_df['Text'] = X_val
+    generate_result(val_df, y_val_pred, 'val_predictions.csv')
 
 # Run script
 if __name__ == "__main__":
