@@ -2,10 +2,18 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
-from transformers import RobertaTokenizer, RobertaForSequenceClassification, AdamW
+from transformers import RobertaTokenizer, RobertaForSequenceClassification
+from torch.optim import AdamW
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 from tqdm import tqdm
+
+
+print("CUDA Available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("GPU Name:", torch.cuda.get_device_name(0))
+else:
+    print("No GPU detected.")
 
 # ---------------- Dataset ----------------
 class StressDataset(Dataset):
@@ -31,10 +39,12 @@ class StressDataset(Dataset):
         }
 
 # ---------------- Load and Prepare Data ----------------
-df = pd.read_csv('mental_health.csv')
+df = pd.read_csv('/home/huangzekai/桌面/ML Singpaore/ML-Singapore/data/mental_health.csv')
+
 
 # Only binary: 1 = stressful, 0 = not stressful
-df['label'] = df['label'].apply(lambda x: 1 if str(x).lower() == 'stressful' else 0)
+print(df['label'].value_counts())
+print(df['label'].unique())
 
 X_train, X_val, y_train, y_val = train_test_split(df['text'], df['label'], test_size=0.2, stratify=df['label'], random_state=42)
 
@@ -102,5 +112,5 @@ val_df = pd.DataFrame({
     'true_label': ground_truth,
     'predicted_label': predictions
 })
-val_df.to_csv("roberta_stress_predictions.csv", index=False)
+val_df.to_csv("/home/huangzekai/桌面/ML Singpaore/ML-Singapore/output/roberta_stress_predictions.csv", index=False)
 print("✅ Saved predictions to roberta_stress_predictions.csv")

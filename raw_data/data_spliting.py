@@ -1,3 +1,7 @@
+'''
+This processor is used to split the data into test and train, where the ratio is set 2:8.
+'''
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 

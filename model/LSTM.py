@@ -140,6 +140,6 @@ val_df = pd.DataFrame({
     'predicted_label': decoded_pred
 })
 
-val_df.to_csv('lstm_attention_predictions.csv', index=False)
+val_df.to_csv('/home/huangzekai/桌面/ML Singpaore/ML-Singapore/data/lstm_attention_predictions.csv', index=False)
 print("✅ Predictions saved to lstm_attention_predictions.csv")
 
