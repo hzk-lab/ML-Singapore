@@ -33,7 +33,7 @@ def generate_result(test, y_pred, filename):
 
 def main():
     # Load the dataset
-    df = pd.read_csv('mental_health.csv')
+    df = pd.read_csv('/home/huangzekai/桌面/ML Singpaore/ML-Singapore/raw_data/mental_health.csv')
 
     # Check column names (Optional Debugging)
     print("Available columns:", df.columns)
@@ -81,7 +81,7 @@ def main():
     # Optional: Save predictions to CSV
     val_df = X_val.to_frame()
     val_df['Text'] = X_val
-    generate_result(val_df, y_val_pred, 'main_predictions.csv')
+    generate_result(val_df, y_val_pred, '/home/huangzekai/桌面/ML Singpaore/ML-Singapore/output/main_predictions.csv')
 
 # Run script
 if __name__ == "__main__":

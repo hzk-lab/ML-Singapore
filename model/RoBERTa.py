@@ -39,7 +39,7 @@ class StressDataset(Dataset):
         }
 
 # ---------------- Load and Prepare Data ----------------
-df = pd.read_csv('/home/huangzekai/桌面/ML Singpaore/ML-Singapore/data/mental_health.csv')
+df = pd.read_csv('/home/huangzekai/桌面/ML Singpaore/ML-Singapore/raw_data/mental_health.csv')
 
 
 # Only binary: 1 = stressful, 0 = not stressful
@@ -114,3 +114,11 @@ val_df = pd.DataFrame({
 })
 val_df.to_csv("/home/huangzekai/桌面/ML Singpaore/ML-Singapore/output/roberta_stress_predictions.csv", index=False)
 print("✅ Saved predictions to roberta_stress_predictions.csv")
+
+# ---------------- Save Teacher Model ----------------
+# Here we intend to use this as the teacher model for the following fine-tuning in Singapore.
+
+model.save_pretrained("/home/huangzekai/桌面/ML Singpaore/ML-Singapore/output/teacher_roberta_model")
+tokenizer.save_pretrained("/home/huangzekai/桌面/ML Singpaore/ML-Singapore/output/teacher_roberta_model")
+print("✅ The RoBERTa model with weights has been saved to teacher_roberta_model")
+
