@@ -77,10 +77,10 @@ else:
 # Step 2: Load the trained model
 print("Step 2: Loading trained model...")
 # Check for model in current directory first, then parent directory
-if os.path.exists("./deberta-stress-model"):
-    model_path = "./deberta-stress-model"
-elif os.path.exists(os.path.join(parent_dir, "deberta-stress-model")):
-    model_path = os.path.join(parent_dir, "deberta-stress-model")
+if os.path.exists("./deberta-stress-model-retrain-global"):
+    model_path = "./deberta-stress-model-retrain-global"
+elif os.path.exists(os.path.join(parent_dir, "deberta-stress-model-retrain-global")):
+    model_path = os.path.join(parent_dir, "deberta-stress-model-retrain-global")
 else:
     raise ValueError("Model directory not found in current or parent directory! Please train the model first.")
 

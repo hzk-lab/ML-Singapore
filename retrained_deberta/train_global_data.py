@@ -40,6 +40,6 @@ trainer = Trainer(
 
 trainer.train()
 
-trainer.save_model("./deberta-stress-model-retrain")
-tokenizer.save_pretrained("./deberta-stress-model-retrain")
+trainer.save_model("./deberta-stress-model-retrain-global")
+tokenizer.save_pretrained("./deberta-stress-model-retrain-global")
 
